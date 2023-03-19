@@ -9,9 +9,13 @@ return {
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+    ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
+    ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
+    ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
+        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(
+          bufnr) end)
       end,
       desc = "Pick to close",
     },
@@ -19,7 +23,20 @@ return {
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
+    ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
+    -- Open file in browser
+    ["<space>r"] = { ":exe ':silent !firefox %'<cr>", desc = "Run Browser" },
+    -- View treesitter highlight groups
+    ["<space>k"] = { ":TSHighlightCapturesUnderCursor<cr>", desc = "View Highlight Group" },
+    -- Easy splits
+    ["\\"] = { "<cmd>split<cr>", desc = "Horizontal split" },
+    ["|"] = { "<cmd>vsplit<cr>", desc = "Vertical split" },
+    -- Search highlight groups
+    ["<space>sg"] = { "<cmd>Telescope highlights<cr>", desc = "Highlight groups" },
+    -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+
+    ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
   },
   t = {
     -- setting a mapping to false will disable it
